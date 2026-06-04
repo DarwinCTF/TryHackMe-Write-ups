@@ -9,6 +9,7 @@
 - **Difficulty:** Easy
     
 - **Objective:** Help Rick make his potion by finding 3 hidden ingredients scattered across the server.
+- ![Uploading image.png…]()
 
 ## 🔬 Phase 1: Reconnaissance & Enumeration
 
