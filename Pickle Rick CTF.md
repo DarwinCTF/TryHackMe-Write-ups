@@ -32,7 +32,7 @@ Visiting the website shows a note from Rick asking for help.
 
 - **Source Code Inspection:** Right-clicking and viewing the page source reveals a hidden comment:
 
-```We found a username:* `RicksRules`. * **Directory Brute-Forcing (Gobuster/Dirbuster):** Next, we run a directory scan to find hidden pages or login portals. bash gobuster dir -u http://<TARGET_IP>/ -w /usr/share/wordlists/dirb/common.txt -x php,txt,html
+We found a username:* `RicksRules`. * **Directory Brute-Forcing (Gobuster/Dirbuster):** Next, we run a directory scan to find hidden pages or login portals. bash gobuster dir -u http://<TARGET_IP>/ -w /usr/share/wordlists/dirb/common.txt -x php,txt,html
 
 **Interesting findings:**
 
