@@ -10,8 +10,6 @@
     
 - **Objective:** Help Rick make his potion by finding 3 hidden ingredients scattered across the server.
 
-![[Pasted image 20260604143632.png]]
-
 ## 🔬 Phase 1: Reconnaissance & Enumeration
 
 ### 1. Nmap Scan
@@ -22,8 +20,6 @@ Bash
 ```
 nmap -sC -sV -oN nmap_report.txt <TARGET_IP>
 ```
-
-![[Pasted image 20260604143818.png]]
 **Results:**
 
 - **Port 22 (SSH):** Open (OpenSSH 7.2p2)
