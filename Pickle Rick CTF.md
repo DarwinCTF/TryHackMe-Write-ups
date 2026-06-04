@@ -9,7 +9,8 @@
 - **Difficulty:** Easy
     
 - **Objective:** Help Rick make his potion by finding 3 hidden ingredients scattered across the server.
-- ![Uploading image.png…]()
+
+![[Pasted image 20260604143632.png]]
 
 ## 🔬 Phase 1: Reconnaissance & Enumeration
 
@@ -22,6 +23,7 @@ Bash
 nmap -sC -sV -oN nmap_report.txt <TARGET_IP>
 ```
 
+![[Pasted image 20260604143818.png]]
 **Results:**
 
 - **Port 22 (SSH):** Open (OpenSSH 7.2p2)
@@ -33,7 +35,7 @@ Visiting the website shows a note from Rick asking for help.
 
 - **Source Code Inspection:** Right-clicking and viewing the page source reveals a hidden comment:
 
-We found a username:* `RicksRules`. * **Directory Brute-Forcing (Gobuster/Dirbuster):** Next, we run a directory scan to find hidden pages or login portals. bash gobuster dir -u http://<TARGET_IP>/ -w /usr/share/wordlists/dirb/common.txt -x php,txt,html
+*```We found a username:* `RicksRules`. * **Directory Brute-Forcing (Gobuster/Dirbuster):** Next, we run a directory scan to find hidden pages or login portals. bash gobuster dir -u http://<TARGET_IP>/ -w /usr/share/wordlists/dirb/common.txt -x php,txt,html
 
 **Interesting findings:**
 
