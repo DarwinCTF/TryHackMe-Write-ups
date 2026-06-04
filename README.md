@@ -45,8 +45,3 @@ Each room has its own directory containing:
 I'll continue adding new write-ups as I complete more rooms and learn new techniques.
 
 Thanks for stopping by.
-
-
-I'll continue adding new write-ups as I complete more rooms and learn new techniques.
-
-Thanks for stopping by.
