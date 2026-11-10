@@ -1,5 +1,5 @@
 
-![[Pasted image 20260615083540.png]]
+![](Assets/Pasted%20image%2020260615083540.png)
 # Walking An Application - TryHackMe Write-Up 🚶‍♂️🌐
 
 ## Overview
@@ -8,7 +8,7 @@ In this room, we explore a web application from a pentester's perspective and le
 
 The target application used throughout the room is **Acme IT Support**.
 
-![[Pasted image 20260615083552.png]]
+![](Assets/Pasted%20image%2020260615083552.png)
 
 ---
 
@@ -32,7 +32,7 @@ After reviewing the provided Acme IT Support documentation and application overv
 /customers/ticket/new
 ```
 
-![[Pasted image 20260615083609.png]]
+![](Assets/Pasted%20image%2020260615083609.png)
 ---
 
 # Task 3 - Viewing Page Source
@@ -53,7 +53,7 @@ I opened the page source using:
     
 - Or the `view-source:` URL prefix
 
-	![[Pasted image 20260615083721.png]]
+![](Assets/Pasted%20image%2020260615083721.png)
 ## Question 1 - HTML Comments
 
 While reviewing the HTML source code, I discovered the following developer comment:
@@ -72,7 +72,7 @@ Further inspection revealed the endpoint:
 
 Browsing to that location revealed the first flag.
 
-![[Pasted image 20260615083744.png]]
+![](Assets/Pasted%20image%2020260615083744.png)
 
 🚩 **Flag**
 ```text
@@ -91,7 +91,7 @@ href="/secret-page"
 
 The page was not linked anywhere in the visible interface, but manually navigating to the endpoint exposed another flag.
 
-![[Pasted image 20260615083828.png]]
+![](Assets/Pasted%20image%2020260615083828.png)
 
 🚩 **Flag**
 ```text
@@ -110,7 +110,7 @@ The source code also revealed that external resources such as JavaScript and CSS
 
 Since publicly accessible asset directories occasionally contain forgotten files, I decided to inspect the directory.
 
-![[Pasted image 20260615084026.png]]
+![](Assets/Pasted%20image%2020260615084026.png)
 
 Inside, I discovered:
 ```text
@@ -129,7 +129,7 @@ THM{INVALID_DIRECTORY_PERMISSIONS}
 ## Question 4 - Changelog Investigation
 
 The final challenge hinted at finding the application's changelog.
-![[Pasted image 20260615084206.png]]
+![](Assets/Pasted%20image%2020260615084206.png)
 
 While examining the source code, I noticed references to the framework used by the application and a URL leading to additional framework information.
 
@@ -139,25 +139,25 @@ After accessing the changelog page, I discovered an interesting endpoint:
 /tmp.zip
 ```
 
-![[Pasted image 20260615084250.png]]
+![](Assets/Pasted%20image%2020260615084250.png)
 
 Files named _backup_, _archive_, or _tmp_ frequently contain forgotten development resources and should always be investigated.
 
 Accessing the archive revealed the final flag for this task.
 
-![[Pasted image 20260615084317.png]]
+![](Assets/Pasted%20image%2020260615084317.png)
 
 🚩 **Flag**
 ```text
 THM{KEEP_YOUR_SOFTWARE_UPDATED}
 ```
 
-![[Pasted image 20260615084348.png]]
+![](Assets/Pasted%20image%2020260615084348.png)
 ---
 
 # Task 4 - Developer Tools: Inspector
 
-![[Pasted image 20260615084407.png|697]]
+![](Assets/Pasted%20image%2020260615084407.png)
 
 Modern browsers include powerful developer tools that can be used to inspect and manipulate webpage content.
 
@@ -165,7 +165,7 @@ For this task, we focus on the **Inspector** tab.
 
 Inside the **News** section of the Acme IT Support application, the third article is hidden behind a premium subscription paywall.
 
-![[Pasted image 20260615084442.png]]
+![](Assets/Pasted%20image%2020260615084442.png)
 
 Rather than attempting to bypass authentication, we can inspect the HTML responsible for displaying the overlay.
 
@@ -175,7 +175,7 @@ Using **Inspect Element**, I located the component:
 premium-customer-blocker
 ```
 
-![[Pasted image 20260615084517.png]]
+![](Assets/Pasted%20image%2020260615084517.png)
 
 By modifying the element and replacing it with:
 
@@ -187,7 +187,7 @@ the paywall immediately disappeared, revealing the hidden content.
 
 Remember that these modifications only exist locally within the browser and will disappear after refreshing the page.
 
-![[Pasted image 20260615084550.png]]
+![](Assets/Pasted%20image%2020260615084550.png)
 
 🚩 **Flag**
 ```text
@@ -195,7 +195,7 @@ THM{NOT_SO_HIDDEN}
 ```
 
 
-![[Pasted image 20260615084604.png]]
+![](Assets/Pasted%20image%2020260615084604.png)
 ---
 
 # Task 5 - Developer Tools: Debugger
@@ -206,7 +206,7 @@ After navigating to the **Contact** page, a brief red flash appeared every time 
 
 To understand what was happening, I inspected the application's JavaScript files and discovered:
 
-![[Pasted image 20260615084638.png]]
+![](Assets/Pasted%20image%2020260615084638.png)
 
 ```text
 /assets/flash.min.js
@@ -214,11 +214,10 @@ To understand what was happening, I inspected the application's JavaScript files
 
 The file was minified, making it difficult to read.
 
-![[Pasted image 20260615084953.png]]
-
+![](Assets/Pasted%20image%2020260615084953.png
 Using the **Pretty Print** feature (`{ }`) inside Developer Tools, I reformatted the script and searched for the functionality responsible for removing the red message.
 
-![[Pasted image 20260615085030.png]]
+![](Assets/Pasted%20image%2020260615085030.png)
 Near the bottom of the file, I found:
 
 ```javascript
@@ -231,7 +230,7 @@ To prevent it from executing, I placed a breakpoint on the corresponding line an
 
 The script execution paused before the popup could be removed, allowing the hidden flag to remain visible.
 
-![[Pasted image 20260615085053.png]]
+![](Assets/Pasted%20image%2020260615085053.png)
 
 
 🚩 **Flag**
@@ -250,7 +249,7 @@ The Network panel records every request made by a webpage, making it extremely u
 While on the Contact page, I opened the Network tab and submitted the contact form.
 
 A new request appeared:
-![[Pasted image 20260615085231.png]]
+![](Assets/Pasted%20image%2020260615085231.png)
 
 ```text
 contact-msg
@@ -260,14 +259,14 @@ The task specifically asks for the flag located within the response.
 
 After selecting the request and opening the **Response** tab, the flag became visible.
 
-![[Pasted image 20260615085256.png]]
+![](Assets/Pasted%20image%2020260615085256.png)
 
 🚩 **Flag**
 ```text
 THM{GOT_AJAX_FLAG}
 ```
 
-![[Pasted image 20260615085312.png]]
+![](Assets/Pasted%20image%2020260615085312.png)
 ---
 
 # Task 6 - Developer Tools: Storage
@@ -282,7 +281,7 @@ After creating a new account at:
 
 I logged in and opened the **Storage** tab within Developer Tools.
 
-![[Pasted image 20260615085405.png]]
+![](Assets/Pasted%20image%2020260615085405.png)
 
 This section allows us to inspect:
 
@@ -303,7 +302,7 @@ The question asks:
 
 After reviewing the stored session information, I identified the value.
 
-![[Pasted image 20260615085431.png]]
+![](Assets/Pasted%20image%2020260615085431.png)
 
 ✅ **Answer**
 
@@ -312,12 +311,11 @@ FALSE
 ```
 
 
-![[Pasted image 20260615085450.png]]
+![](Assets/Pasted%20image%2020260615085450.png)
 ---
 
 
-![[Pasted image 20260615085506.png]]
-# Conclusion 🎉
+![](Assets/Pasted%20image%2020260615085506.png)# Conclusion 🎉
 
 This room provides a great introduction to manual web application enumeration and browser-based reconnaissance techniques.
 
